@@ -1,0 +1,102 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.FormControl {
+
+    label {
+        display: block;
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+
+        &:disabled {
+            background: $general_color_6;
+            cursor: not-allowed;
+        }
+    }
+
+    span {
+        color: red;
+    }
+}
+
+@media (min-width: 1230px) {
+    .FormControl {
+
+        label {
+            margin: 0 0 7px 0;
+            font-size: 24px;
+        }
+
+        input {
+            font-size: 18px;
+        }
+
+        span {
+            font-size: 14px;
+        }
+
+        &.Invalid {
+            
+            input {
+                margin: 0 0 7px 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .FormControl {
+
+        label {
+            margin: 0 0 7vw/$tb+vw 0;
+            font-size: 20vw/$tb+vw;
+        }
+
+        input {
+            font-size: 16vw/$tb+vw;
+        }
+
+        span {
+            font-size: 12vw/$tb+vw;
+        }
+
+        &.Invalid {
+            
+            input {
+                margin: 0 0 7vw/$tb+vw 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .FormControl {
+
+        label {
+            margin: 0 0 7vw/$mb+vw 0;
+            font-size: 24vw/$mb+vw;
+        }
+
+        input {
+            font-size: 18vw/$mb+vw;
+        }
+
+        span {
+            font-size: 14vw/$mb+vw;
+        }
+
+        &.Invalid {
+            
+            input {
+                margin: 0 0 7vw/$mb+vw 0;
+            }
+        }
+    }
+}

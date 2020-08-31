@@ -1,0 +1,52 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.Layout {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+
+    .MainContent {
+        flex-grow: 1;
+        background: white;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1230px) {
+    .Layout {
+
+        .MainContent {
+            padding: 30px 0;
+            margin-top: $bar_height_dt;
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .Layout {
+
+        .MainContent {
+            padding: 30vw/$tb+vw 0;
+            margin-top: $bar_height_tb;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .Layout {
+
+        .MainContent {
+            padding: 30vw/$mb+vw 0;
+            margin-top: $bar_height_mb;
+        }
+    }
+}

@@ -1,0 +1,132 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.WrapperScrollTopBtn {
+    position: fixed;
+    z-index: 1;
+    display: none;
+    user-select: none;
+
+    .ScrollTopBtn {
+        
+        div {
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat; 
+            transform: rotate(180deg);
+        }
+    }
+    
+    &.Active {
+
+        .ScrollTopBtn {
+            
+            div {
+                transform: rotate(0);
+            }
+        }
+    }
+
+    &.Show {
+        display: block;
+    }
+}
+
+@media (min-width: 1230px) {
+    .WrapperScrollTopBtn {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: calc((100% - 900px) / 2 + 900px);
+        cursor: pointer;
+
+        .ScrollTopBtn {
+            padding: ($bar_height_dt + 30px) 0 0 0;
+            max-width: 100px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            div {
+                min-width: 35px;
+                width: 35px;
+                height: 35px;
+                transition: .3s;
+            }
+
+            span {
+                font-weight: 600;
+                font-size: 16px;
+            }
+        }
+
+        &:hover {
+
+            .ScrollTopBtn {
+                background: $general_color_2;
+            }
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .WrapperScrollTopBtn {
+        bottom: 30vw/$tb+vw;
+        left: 30vw/$tb+vw;
+        cursor: pointer;
+        border: 0.125vw solid #e6e6e6;
+        border-radius: 0.375vw;
+        background: white;
+        z-index: 31;
+
+        .ScrollTopBtn {
+            padding: 10vw/$tb+vw;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0;
+
+            div {
+                min-width: 30vw/$tb+vw;
+                width: 30vw/$tb+vw;
+                height: 30vw/$tb+vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .WrapperScrollTopBtn {
+        bottom: 30vw/$mb+vw;
+        left: 30vw/$mb+vw;
+        cursor: pointer;
+        border: 0.125vw solid #e6e6e6;
+        border-radius: 0.375vw;
+        background: white;
+        z-index: 31;
+
+        .ScrollTopBtn {
+            padding: 10vw/$mb+vw;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0;
+
+            div {
+                min-width: 35vw/$mb+vw;
+                width: 35vw/$mb+vw;
+                height: 35vw/$mb+vw;
+            }
+        }
+    }
+}

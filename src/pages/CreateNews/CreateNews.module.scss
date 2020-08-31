@@ -1,0 +1,46 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.CreateNews {
+    display: flex;
+    flex-direction: column;
+
+    .GoBack {
+        align-self: flex-start;
+    }
+    
+    .SubmitBtn {
+        align-self: flex-end;
+    }
+}
+
+@media (min-width: 1230px) {
+    .CreateNews {
+        
+        .SubmitBtn {
+            margin: 20px 0 0 0;
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .CreateNews {
+        
+        .SubmitBtn {
+            margin: 25vw/$tb+vw 0 0 0;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .CreateNews {
+        
+        .SubmitBtn {
+            margin: 30vw/$mb+vw 0 0 0;
+        }
+    }
+}

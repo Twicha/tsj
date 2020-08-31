@@ -1,0 +1,32 @@
+
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.Logo {
+    color: $general_color_1;
+    font-weight: 500;
+    font-family: 'roboto';
+    text-decoration: none;
+}
+
+@media (min-width: 1230px) {
+    .Logo {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .Logo {
+        font-size: 26vw/$tb+vw;
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .Logo {
+        font-size: 30vw/$mb+vw;
+    }
+}

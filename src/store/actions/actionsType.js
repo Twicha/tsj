@@ -1,0 +1,9 @@
+export const HIDE_SCROLL_TOP_BTN = 'HIDE_SCROLL_TOP_BTN';
+export const SCROLL_DOWN_NO_ACTIVE = 'SCROLL_DOWN_NO_ACTIVE';
+export const SCROLL_DOWN_ACTIVE = 'SCROLL_DOWN_ACTIVE';
+export const SCROLL_UP_NO_ACTIVE = 'SCROLL_UP_NO_ACTIVE';
+export const SCROLL_UP_ACTIVE = 'SCROLL_UP_ACTIVE';
+export const SCROLL_TOP = 'SCROLL_TOP';
+
+
+export const AUTH = 'AUTH';

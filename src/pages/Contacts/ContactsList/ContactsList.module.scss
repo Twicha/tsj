@@ -1,0 +1,39 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.ContactsList {
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 1230px) {
+    
+    .ContactsList {
+        padding: 30px;
+        max-width: 600px;
+        background: white;
+        box-shadow: $bs_1_dt;
+        border-radius: 3px;
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+    
+    .ContactsList {
+        padding: 25vw/$tb+vw;
+        max-width: 600vw/$tb+vw;
+        background: white;
+        box-shadow: $bs_1_dt;
+        border-radius: 3vw/$tb+vw;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+    
+    .ContactsList {
+        margin: 0 0 20vw/$mb+vw 0;
+    }
+}

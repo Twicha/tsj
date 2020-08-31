@@ -1,0 +1,86 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.WrapperFooter {
+    z-index: 30;
+    background: white;
+    
+    .Footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1230px) {
+    .WrapperFooter {
+        box-shadow: $bs_1_dt;
+    
+        .Footer {
+            height: $bar_height_dt;
+
+            .Copyright {
+                font-size: 16px;
+            }
+
+            .Feedback {
+                font-size: 16px;
+
+                a {
+                    margin: 0 0 0 7px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .WrapperFooter {
+        box-shadow: $bs_1_tb;
+    
+        .Footer {
+            height: $bar_height_tb;
+
+            .Copyright {
+                font-size: 14vw/$tb+vw;
+            }
+
+            .Feedback {
+                font-size: 14vw/$tb+vw;
+
+                a {
+                    margin: 0 0 0 7vw/$tb+vw;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .WrapperFooter {
+        box-shadow: $bs_1_mb;
+    
+        .Footer {
+            height: $bar_height_mb;
+
+            .Copyright {
+                font-size: 16vw/$mb+vw;
+            }
+
+            .Feedback {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 16vw/$mb+vw;
+
+                a {
+                    margin: 0 0 0 0;
+                }
+            }
+        }
+    }
+}

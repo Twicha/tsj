@@ -1,0 +1,72 @@
+@import '../../../../scss/variables.scss';
+@import '../../../../scss/mixins.scss';
+
+.ContactsListItem {
+    list-style: none;
+
+    a {
+        font-weight: 600;
+    }
+}
+
+@media (min-width: 1230px) {
+
+    .ContactsListItem {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+
+        a {
+            font-size: 16px;
+            text-decoration: none;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &:last-child {
+            margin: 0 0 0 0;
+        }
+    }
+
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .ContactsListItem {
+        margin: 0 0 12vw/$tb+vw 0;
+        font-size: 14vw/$tb+vw;
+
+        a {
+            font-size: 14vw/$tb+vw;
+            text-decoration: underline;
+        }
+
+        &:last-child {
+            margin: 0 0 0 0;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .ContactsListItem {
+        margin: 0 0 20vw/$mb+vw 0;
+        font-size: 22vw/$mb+vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        a {
+            margin: 7vw/$mb+vw 0 0 0;
+            font-size: 22vw/$mb+vw;
+            text-decoration: underline;
+        }
+
+        &:last-child {
+            margin: 0 0 0 0;
+        }
+    }
+}

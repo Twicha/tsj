@@ -1,0 +1,42 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.Home {
+    display: flex;
+    flex-direction: column;
+
+    .News {
+
+    }
+}
+
+@media (min-width: 1230px) {
+    .Home {
+
+        .News {
+    
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .Home {
+
+        .News {
+    
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .Home {
+
+        .News {
+    
+        }
+    }
+}

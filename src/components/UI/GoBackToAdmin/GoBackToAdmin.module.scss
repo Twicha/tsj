@@ -1,0 +1,28 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.GoBackToAdmin {
+    align-self: flex-start;
+}
+
+@media (min-width: 1230px) {
+    .GoBackToAdmin {
+        margin: 0 0 30px 0;
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .GoBackToAdmin {
+        margin: 0 0 30vw/$tb+vw 0;
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .GoBackToAdmin {
+        margin: 0 0 30vw/$mb+vw 0;
+    }
+}
