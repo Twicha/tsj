@@ -14,7 +14,6 @@ import PrivateRoute from "./helpers/PrivateRoute";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import ScrollTopBtn from './components/ScrollTopBtn/ScrollTopBtn';
 
 function App() {
     const { isAuth } = useSelector(({ auth }) => {
@@ -26,7 +25,6 @@ function App() {
     return (
         <BrowserRouter>
             <div className={classes.Layout}>
-                <ScrollTopBtn />
                 <Header />
                 <div className={classes.MainContent}>
                     <Switch>

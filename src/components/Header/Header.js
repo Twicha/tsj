@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import classes from "./Header.module.scss";
 import classNames from "classnames";
 import Logo from "./Logo/Logo";
 import Navigation from "./Navigation/Navigation";
 import MobileMenuButton from "./MobileMenuButton/MobileMenuButton";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchHideSctollTopBtn } from "../../store/actions/scrollTopBtn";
+import { useSelector } from "react-redux";
 import { scrollTop } from "../../functions";
 
 const Header = () => {
-    const dispatch = useDispatch();
-    const [mobileScreen, setMobileScreen] = useState(
+    const [mobileScreen, setMobileScreen] = React.useState(
         document.documentElement.clientWidth > 480 ? false : true
     );
-    const [mobileMenu, setMobileMenu] = useState(false);
-    const { isAuth, scrollTopBtnActive } = useSelector(
-        ({ auth, scrollTopBtn }) => {
-            return {
-                isAuth: auth.isAuth,
-                scrollTopBtnActive: scrollTopBtn.active,
-            };
-        }
-    );
+    const [mobileMenu, setMobileMenu] = React.useState(false);
+    const { isAuth } = useSelector(({ auth }) => {
+        return {
+            isAuth: auth.isAuth,
+        };
+    });
 
     const links = !isAuth
         ? [
@@ -36,7 +31,7 @@ const Header = () => {
               { to: "/contacts", title: "Контакты", exact: false },
           ];
 
-    useEffect(() => {
+    React.useEffect(() => {
         window.addEventListener("resize", switchMobileMenuHandler);
 
         return () => {
@@ -74,10 +69,6 @@ const Header = () => {
 
         if (mobileMenu) {
             mobileMenuHandler();
-        }
-
-        if (scrollTopBtnActive) {
-            dispatch(fetchHideSctollTopBtn());
         }
     };
 

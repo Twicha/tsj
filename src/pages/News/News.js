@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 import classes from './News.module.scss';
 import classNames from 'classnames';
 import { getPosts } from '../../posts';
@@ -7,18 +7,16 @@ import Search from './Search/Search';
 import {DOCUMENT_TITLE} from '../../variables';
 
 const News = () => {
-    const [value, setValue] = useState('');
-    const [posts, setPosts] = useState([{},{},{},{},{},{},{},{},{},{}]);
-    const [oldPosts, setOldPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [search, setSearch] = useState(false);
-    const [notFound, setNotFound] = useState(false);
+    const [value, setValue] = React.useState('');
+    const [posts, setPosts] = React.useState(Array(10).fill({}));
+    const [oldPosts, setOldPosts] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+    const [search, setSearch] = React.useState(false);
+    const [notFound, setNotFound] = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         document.title = `${DOCUMENT_TITLE}Новости`;
-    }, []);
 
-    useEffect(() => {
         getPosts().then(res => {
             const arr = [];
             console.log(1);

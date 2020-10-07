@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import classes from './Admin.module.scss';
 import classNames from 'classnames';
 import {logout} from '../../auth';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {fetchAuth} from '../../store/actions/auth';
 import { Link } from 'react-router-dom';
 import NewsList from './NewsList/NewsList';
 import { DOCUMENT_TITLE } from '../../variables';
 
-const Admin = ({fetchAuth}) => {
+const Admin = () => {
+    const dispatch = useDispatch();
 
     useEffect(() => {
         document.title = `${DOCUMENT_TITLE}Админка`;
@@ -17,7 +18,7 @@ const Admin = ({fetchAuth}) => {
     const adminLogout = () => {
         logout();
 
-        fetchAuth();
+        dispatch(fetchAuth());
     }
         
     return (
@@ -33,10 +34,4 @@ const Admin = ({fetchAuth}) => {
     );
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        fetchAuth: () => dispatch(fetchAuth())
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Admin);
+export default Admin;

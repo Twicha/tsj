@@ -8,13 +8,6 @@ import { DOCUMENT_TITLE } from "../../variables";
 import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
-    const dispatch = useDispatch();
-    const { scrollTopBtnActive } = useSelector(({ scrollTopBtn }) => {
-        return {
-            scrollTopBtnActive: scrollTopBtn.active,
-        };
-    });
-
     const [posts, setPosts] = React.useState(Array(10).fill({}));
     const [loading, setLoading] = React.useState(true);
 
@@ -41,11 +34,7 @@ const Home = () => {
     return (
         <div className={classNames("container", classes.Home)}>
             <div className={classes.News}>
-                <NewsHeader
-                    dispatch={dispatch}
-                    scrollTopBtnActive={scrollTopBtnActive}
-                    length={posts.length}
-                />
+                <NewsHeader length={posts.length} />
                 <NewsList loading={loading} posts={posts} />
             </div>
         </div>
