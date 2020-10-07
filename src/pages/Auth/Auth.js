@@ -1,41 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Auth.module.scss';
 import classNames from 'classnames';
 import axios from 'axios';
 import {setToken} from '../../auth';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {fetchAuth} from '../../store/actions/auth';
+import { DOCUMENT_TITLE } from '../../variables';
 
-export class Auth extends Component {
-    state = {
-        submitted: false,
-        error: false,
+const Auth = () => {
+    const dispatch = useDispatch();
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
+    const [form, setForm] = useState({
         email: '',
         password: ''
-    }
+    });
 
-    inputChangeHandler = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+    useEffect(() => {
+        document.title = `${DOCUMENT_TITLE}Авторизация`;
+    }, []);
 
-        this.setState({
-            [name]: value
+    const inputChangeHandler = (e) => {
+        const inputName = e.target.name;
+        const inputValue = e.target.value;
+
+        setForm({
+            ...form,
+            [inputName]: inputValue
         });
     }
 
-    authHandler = async (e) => {
+    const authHandler = async (e) => {
         e.preventDefault();
 
-        this.setState({
-            error: false,
-            submitted: true
-        });
-
-        
+        setSubmitted(true);
+        setError(false);   
 
         const user = {
-            email: this.state.email,
-            password: this.state.password,
+            ...form,
             returnSecureToken: true
         };
 
@@ -47,66 +49,47 @@ export class Auth extends Component {
             await auth().then(res => {
                 setToken(res);
 
-                this.props.fetchAuth();
+                dispatch(fetchAuth());
             });
         } catch (e) {
             console.log(e);
-            this.setState({
-                submitted: false,
-                error: true
-            });
+
+            setSubmitted(false);
+            setError(true);  
         }
     }
 
-    render() {
-        const {error, submitted, email, password} = this.state;
-
-        const errorMessage = <div className={classes.Error}>Неверные электронная почта или пароль...</div>;
-
-        return (
-            <div className={classNames(classes.Auth, "container")}>
-                <form>
-                    <h2>Авторизация</h2>
-                    <input 
-                        type="text" 
-                        name="email" 
-                        placeholder="Введите электронную почту..."
-                        value={email}
-                        onChange={this.inputChangeHandler}
-                        disabled={submitted}
-                    />
-                    <input 
-                        type="password" 
-                        name="password" 
-                        placeholder="Введите пароль..."
-                        value={password}
-                        onChange={this.inputChangeHandler}
-                        disabled={submitted}
-                    />
-                    <button 
-                        type="submit"
-                        onClick={this.authHandler}
-                        disabled={submitted}
-                    >
-                        Войти
-                    </button>
-                </form>
-                {error ? errorMessage : null}
-            </div>
-        )
-    }
+    return (
+        <div className={classNames(classes.Auth, "container")}>
+            <form>
+                <h2>Авторизация</h2>
+                <input 
+                    type="text" 
+                    name="email" 
+                    placeholder="Введите электронную почту..."
+                    value={form.email}
+                    onChange={inputChangeHandler}
+                    disabled={submitted}
+                />
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Введите пароль..."
+                    value={form.password}
+                    onChange={inputChangeHandler}
+                    disabled={submitted}
+                />
+                <button 
+                    type="submit"
+                    onClick={authHandler}
+                    disabled={submitted}
+                >
+                    Войти
+                </button>
+            </form>
+            {error && <div className={classes.Error}>Неверные электронная почта или пароль...</div>}
+        </div>
+    )
 }
 
-function mapStateToProps(state) {
-    return {
-        auth: state.auth.auth
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        fetchAuth: () => dispatch(fetchAuth())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default Auth;

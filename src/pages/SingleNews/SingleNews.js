@@ -1,83 +1,71 @@
-import React, { useEffect,useState } from 'react';
-import classes from './SingleNews.module.scss';
-import classNames from 'classnames';
-import { getPost } from '../../posts';
-import { postedTime } from '../../functions';
+import React from "react";
+import classes from "./SingleNews.module.scss";
+import classNames from "classnames";
+import { getPost } from "../../posts";
+import { postedTime } from "../../functions";
+import { useHistory } from "react-router";
+import { DOCUMENT_TITLE } from "../../variables";
 
 const SingleNews = (props) => {
-    const [post, setPost] = useState({});
-    const [loading, setLoading] = useState(true);
+    const history = useHistory();
+    const [post, setPost] = React.useState(null);
+    const [loading, setLoading] = React.useState(true);
 
-    useEffect(() => {
-        console.log(props);
+    React.useEffect(() => {
+        try {
+            getPost(props.match.params.id).then((res) => {
+                if (res) {
+                    setPost(res);
+                    setLoading(false);
+                } else {
+                    history.push("/404");
+                }
+            });
+        } catch (error) {
+            console.log(error);
 
-        getPost(props.match.params.id).then(res => {
-            setPost(res);
-            setLoading(false);
-        })
+            history.push("/404");
+        }
     }, []);
 
+    React.useEffect(() => {
+        document.title = `${DOCUMENT_TITLE}${post && post.title}`;
+    }, [post]);
+
     const loader = (
-        <div className={classNames('container', classes.SingleNews, classes.Loader)}>
+        <div
+            className={classNames(
+                "container",
+                classes.SingleNews,
+                classes.Loader
+            )}
+        >
             <h1 className={classNames(classes.SingleNews__Title)}>заглушка</h1>
-
             <div className={classNames(classes.SingleNews__Text)}>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
-                <p>заглушка</p>
+                {Array(43)
+                    .fill(0)
+                    .map((_, index) => (
+                        <p key={index}>заглушка</p>
+                    ))}
             </div>
-
-            <small className={classNames(classes.SingleNews__Posted)}>заглушка</small>
+            <small className={classNames(classes.SingleNews__Posted)}>
+                заглушка
+            </small>
         </div>
-    )
+    );
 
-    const content = (
-        <div className={classNames('container', classes.SingleNews)}>
+    const content = post && (
+        <div className={classNames("container", classes.SingleNews)}>
             <h1 className={classNames(classes.SingleNews__Title)}>
                 {post.title ? post.title : null}
             </h1>
 
-            <div className={classNames("ql-editor", classes.SingleNews__Text)} dangerouslySetInnerHTML={{__html: post.text ? post.text : null}}></div>
+            <div
+                className={classNames("ql-editor", classes.SingleNews__Text)}
+                dangerouslySetInnerHTML={{
+                    __html: post.text ? post.text : null,
+                }}
+            ></div>
 
             <small className={classNames(classes.SingleNews__Posted)}>
                 Запись опубликована&nbsp;
@@ -85,13 +73,8 @@ const SingleNews = (props) => {
             </small>
         </div>
     );
-    
 
-    return (
-        <React.Fragment>
-            {loading ? loader : content}
-        </React.Fragment>
-    )
-}
+    return <React.Fragment>{loading ? loader : content}</React.Fragment>;
+};
 
 export default SingleNews;

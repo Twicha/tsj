@@ -1,0 +1,9 @@
+export { default as Admin } from './Admin/Admin';
+export { default as Auth } from './Auth/Auth';
+export { default as Contacts } from './Contacts/Contacts';
+export { default as CreateNews } from './CreateNews/CreateNews';
+export { default as EditNews } from './EditNews/EditNews';
+export { default as Home } from './Home/Home';
+export { default as News } from './News/News';
+export { default as PageNotFound } from './PageNotFound/PageNotFound';
+export { default as SingleNews } from './SingleNews/SingleNews';

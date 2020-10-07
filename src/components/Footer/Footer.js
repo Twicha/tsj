@@ -2,9 +2,9 @@ import React from 'react';
 import classes from './Footer.module.scss';
 import classNames from 'classnames';
 
-const Footer = () => {
-    const yearNow = (new Date()).getFullYear().toString();
+const yearNow = (new Date()).getFullYear().toString();
 
+const Footer = React.memo(() => {
     return (
         <div className={classes.WrapperFooter}>
             <footer className={classNames(classes.Footer, 'container')}>
@@ -16,6 +16,6 @@ const Footer = () => {
             </footer>
         </div>
     )
-}
+});
 
 export default Footer;

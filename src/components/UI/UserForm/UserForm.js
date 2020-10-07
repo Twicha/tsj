@@ -1,89 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './UserForm.module.scss';
 import classNames from 'classnames';
-import { Link, Redirect } from 'react-router-dom';
 import Input from '../Input/Input';
 import ReactQuill from 'react-quill';
-import { createPostedTime } from '../../../functions';
-import { createPost, editPost } from '../../../posts';
 
-const UserForm = ({title, text, type, id}) => {
-    const modules = {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote', 'code-block'],
+const modules = {
+    toolbar: [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
 
-            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-            [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-            [{ 'direction': 'rtl' }],                         // text direction
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
 
-            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
-            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-            [{ 'font': [] }],
-            [{ 'align': [] }],
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
 
-            ['image', 'video'],
+        ['image', 'video'],
 
-            ['clean']                                         // remove formatting button
-        ]
-    };
+        ['clean']                                         // remove formatting button
+    ]
+};
 
-    const [titleValue, setTitleValue] = useState(title);
-    const [textValue, setTextValue] = useState(text);    
-    const [post, setPost] = useState({});    
-    const [sended, setSended] = useState(false);    
-
-    const changeTitleHandler = (e) => {
-        setTitleValue(e.target.value);
-    }
-
-    const changeTextHandler = (e) => {
-        setTextValue(e)
-    }
-
-    const submitHandler = async (e) => {
-        e.preventDefault();
-
-        const posted = createPostedTime();
-
-        let post = {
-            title: titleValue,
-            text: textValue
-        };
-
-        if (type === 'create') {
-            post.posted = posted;
-        }
-
-        await setPost(post);
-        
-        try {
-            if (type === 'create') {
-                await createPost(post).then((res) => {
-                    setTitleValue('');
-                    setTextValue('');
-                });
-            } else if (type === 'edit') {
-                await editPost(id, post).then((res) => {
-                    setTitleValue('');
-                    setTextValue('');
-                    setSended(true);
-                });
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    if (sended) {
-        return (
-            <Redirect to="/admin" />
-        );
-    }
+const UserForm = ({title, text, buttonText, changeTitle, changeText, onSubmit, submitted}) => {
+     
 
     return (
         <form className={classNames(classes.UserForm)}>
@@ -93,9 +39,8 @@ const UserForm = ({title, text, type, id}) => {
                 placeholder="Введите название новости..."
                 type="text"
                 name="title"
-                value={titleValue}
-                onChange={changeTitleHandler}
-                // invalid
+                value={title}
+                onChange={changeTitle}
             />
             <div className={classNames(classes.FormControl)}>
                 <label htmlFor="text">
@@ -105,15 +50,17 @@ const UserForm = ({title, text, type, id}) => {
                     id="text"
                     modules={modules} 
                     theme="snow" 
-                    value={textValue} 
-                    onChange={changeTextHandler}
+                    value={text} 
+                    onChange={changeText}
                 />
             </div>
             <button
+                type="submit"
                 className={classNames('btn', classes.UserForm__SubmitBtn)}
-                onClick={submitHandler}
+                onClick={onSubmit}
+                disabled={submitted}
             >
-                {type === 'create' ? 'Создать новость' : 'Изменить новость'}
+                {buttonText}
             </button>
         </form>
     )

@@ -1,51 +1,55 @@
-import React, {Component, useState, useEffect} from 'react';
-import classes from './Home.module.scss';
-import classNames from 'classnames';
-import NewsCard from '../../components/UI/NewsList/NewsCard/NewsCard';
-import {getPosts} from '../../posts';
-import NewsList from '../../components/UI/NewsList/NewsList';
-import NewsHeader from './News/NewsHeader/NewsHeader';
+import React from "react";
+import classes from "./Home.module.scss";
+import classNames from "classnames";
+import { getPosts } from "../../posts";
+import NewsList from "../../components/UI/NewsList/NewsList";
+import NewsHeader from "./News/NewsHeader/NewsHeader";
+import { DOCUMENT_TITLE } from "../../variables";
+import { useDispatch, useSelector } from "react-redux";
 
-export class Home extends Component {
-    state = {
-        posts: [{},{},{},{},{},{},{},{},{},{}],
-        loading: true
-    }
+const Home = () => {
+    const dispatch = useDispatch();
+    const { scrollTopBtnActive } = useSelector(({ scrollTopBtn }) => {
+        return {
+            scrollTopBtnActive: scrollTopBtn.active,
+        };
+    });
 
-    componentDidMount() {
-        getPosts().then(res => {
+    const [posts, setPosts] = React.useState(Array(10).fill({}));
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        document.title = `${DOCUMENT_TITLE}Главная`;
+
+        getPosts().then((res) => {
             const arr = [];
 
             Object.keys(res).forEach((key, index) => {
                 res[key].postId = key;
                 arr.push(res[key]);
-            })
-    
+            });
+
             arr.reverse();
 
             const finalArr = arr.filter((_, i) => i < 10);
-            
-            this.setState({
-                posts: finalArr,
-                loading: false
-            })
+
+            setPosts(finalArr);
+            setLoading(false);
         });
-    }
+    }, []);
 
-    render() {
-        return (
-            <div className={classNames("container", classes.Home)}>
-                <div className={classes.News}>
-                    <NewsHeader length={this.state.posts.length} />
-                    <NewsList
-                        loading={this.state.loading}
-                        posts={this.state.posts} 
-                    />
-                </div>
-
+    return (
+        <div className={classNames("container", classes.Home)}>
+            <div className={classes.News}>
+                <NewsHeader
+                    dispatch={dispatch}
+                    scrollTopBtnActive={scrollTopBtnActive}
+                    length={posts.length}
+                />
+                <NewsList loading={loading} posts={posts} />
             </div>
-        )
-    }
-}
+        </div>
+    );
+};
 
 export default Home;

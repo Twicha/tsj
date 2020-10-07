@@ -3,7 +3,7 @@ import { isAuthenticated } from "../../auth";
 
 
 const initialState = {
-    auth: isAuthenticated()
+    isAuth: isAuthenticated()
 }
 
 export default function (state = initialState, action) {
@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
         case AUTH:
             return {
                 ...state,
-                auth: isAuthenticated()
+                isAuth: isAuthenticated()
             }
         default:
             return state;

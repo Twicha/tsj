@@ -1,75 +1,84 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './CreateNews.module.scss';
 import classNames from 'classnames';
 import { createPostedTime } from '../../functions';
 import { createPost } from '../../posts';
 import 'react-quill/dist/quill.snow.css';
 import UserForm from '../../components/UI/UserForm/UserForm';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 import GoBackToAdmin from '../../components/UI/GoBackToAdmin/GoBackToAdmin';
+import { DOCUMENT_TITLE } from '../../variables';
 
-export class CreateNews extends Component {
-    state = {
-        post: {},
+const CreateNews = () => {
+    const [post, setPost] = useState({
         title: '',
-        text: '',
-        
-    }
+        text: ''
+    });
+    const [submitted, setSubmitted] = useState(false);
 
-    changeTitleHandler = (e) => {
-        this.setState({
+    useEffect(() => {
+        document.title = `${DOCUMENT_TITLE}Создание новости`;
+    }, []);
+
+    const changeTitleHandler = (e) => {
+        setPost({
+            ...post,
             title: e.target.value
         });
     }
 
-    changeTextHandler = (e) => {
-        this.setState({
+    const changeTextHandler = (e) => {
+        setPost({
+            ...post,
             text: e
         });
     }
 
-    submitHandler = async (e) => {
+    const cleanInputs = () => {
+        setPost({
+            title: '',
+            text: ''
+        });
+    }
+
+    const submitHandler = async (e) => {
         e.preventDefault();
 
-        const posted = createPostedTime();
+        setSubmitted(true);
 
-        let post = {
-            title: this.state.title,
-            text: this.state.text,
-            posted: posted
+        const sendPost = {
+            ...post,
+            posted: createPostedTime()
         };
-
-        await this.setState({
-            post: post
-        });
         
         try {
-            await createPost(this.state.post).then((res) => {
-                this.setState({
-                    title: '',
-                    text: ''
-                });
+            console.log(sendPost);
+            await createPost(sendPost).then(() => {
+                cleanInputs();
+
+                setSubmitted(false);
             });
         } catch (e) {
             console.log(e);
+
+            setSubmitted(false);
         }
     }
 
-    render() {
-
-        return (
-            <div className={classNames('container', classes.CreateNews)}>
-                <GoBackToAdmin />
-                <UserForm
-                    type="create"
-                    title={this.state.title}
-                    text={this.state.text}
-                    submitHandler={this.submitHandler}
-                />
-            </div>
-        )
-    }
+    return (
+        <div className={classNames('container', classes.CreateNews)}>
+            <GoBackToAdmin />
+            <UserForm
+                title={post.title}
+                text={post.text}
+                buttonText="Создать новость"
+                changeTitle={changeTitleHandler}
+                changeText={changeTextHandler}
+                onSubmit={submitHandler}
+                submitted={submitted}
+            />
+        </div>
+    )
 }
 
 export default CreateNews;
+

@@ -2,8 +2,7 @@ import React from 'react';
 import classes from './Logo.module.scss';
 import { Link } from 'react-router-dom';
 
-const Logo = ({onClick}) => {
-
+const Logo = React.memo(({onClick}) => {
     return (
         <Link
             className={classes.Logo}
@@ -13,6 +12,6 @@ const Logo = ({onClick}) => {
             ТСЖ Книжное
         </Link>
     )
-}
+});
 
 export default Logo;

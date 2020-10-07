@@ -1,0 +1,77 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.PageNotFound {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (min-width: 1230px) {
+    .PageNotFound {
+
+        span {
+            display: block;
+            color: white;
+            text-shadow: 3px 3px 5px black;
+
+            &:first-child {
+                font-size: 180px;
+            }
+
+            &:last-child {
+                font-size: 60px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1229px) and (min-width: 481px) {
+    $tb: 8.00vw;
+
+    .PageNotFound {
+        
+        span {
+            display: block;
+            color: white;
+            text-shadow: 3vw/$tb+vw 3vw/$tb+vw 5vw/$tb+vw black;
+
+            &:first-child {
+                font-size: 120vw/$tb+vw;
+            }
+
+            &:last-child {
+                font-size: 50vw/$tb+vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    $mb: 4.80vw;
+
+    .PageNotFound {
+        
+        span {
+            display: block;
+            color: white;
+            text-shadow: 3vw/$mb+vw 3vw/$mb+vw 5vw/$mb+vw black;
+
+            &:first-child {
+                font-size: 120vw/$mb+vw;
+            }
+
+            &:last-child {
+                font-size: 34vw/$mb+vw;
+            }
+        }
+    }
+}

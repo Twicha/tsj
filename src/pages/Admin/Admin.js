@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useEffect } from 'react';
 import classes from './Admin.module.scss';
 import classNames from 'classnames';
 import {logout} from '../../auth';
@@ -6,13 +6,18 @@ import { connect } from 'react-redux';
 import {fetchAuth} from '../../store/actions/auth';
 import { Link } from 'react-router-dom';
 import NewsList from './NewsList/NewsList';
+import { DOCUMENT_TITLE } from '../../variables';
 
-const Admin = (props) => {
+const Admin = ({fetchAuth}) => {
+
+    useEffect(() => {
+        document.title = `${DOCUMENT_TITLE}Админка`;
+    }, []);
     
     const adminLogout = () => {
         logout();
 
-        props.fetchAuth();
+        fetchAuth();
     }
         
     return (
@@ -28,16 +33,10 @@ const Admin = (props) => {
     );
 }
 
-function mapStateToProps(state) {
-    return {
-        auth: state.auth.auth
-    }
-}
-
 function mapDispatchToProps(dispatch) {
     return {
         fetchAuth: () => dispatch(fetchAuth())
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);
+export default connect(null, mapDispatchToProps)(Admin);

@@ -96,6 +96,10 @@ button, input {
             background: white;
         }
     }
+
+    .bs-1 {
+        box-shadow: $bs_1_dt;
+    }
 }
 
 @media (max-width: 1229px) and (min-width: 481px) {
@@ -122,6 +126,10 @@ button, input {
         border-radius: 3vw/$tb+vw;
         box-shadow: $bs_1_tb;
     }
+
+    .bs-1 {
+        box-shadow: $bs_1_tb;
+    }
 }
 
 @media (max-width: 480px) {
@@ -146,6 +154,10 @@ button, input {
         padding: 5vw/$mb+vw 15vw/$mb+vw;
         font-size: 20vw/$mb+vw;
         border-radius: 3vw/$mb+vw;
+        box-shadow: $bs_1_mb;
+    }
+
+    .bs-1 {
         box-shadow: $bs_1_mb;
     }
 }
