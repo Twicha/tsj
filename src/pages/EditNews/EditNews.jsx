@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router';
 import classes from './EditNews.module.scss';
 import classNames from 'classnames';
-import UserForm from '../../components/UI/UserForm/UserForm';
 import { editPost, getPost } from '../../posts';
-import Loader from '../../components/UI/Loader/Loader';
-import GoBackToAdmin from '../../components/UI/GoBackToAdmin/GoBackToAdmin';
-import { useHistory } from 'react-router';
 import { DOCUMENT_TITLE } from '../../variables';
+import {UserForm, Loader, GoBackToAdmin} from '../../components/UI';
 
 const EditNews = (props) => {
     const history = useHistory();
 
     const id = props.match.params.id;
-    const [post, setPost] = useState(null);
-    const [submitted, setSubmitted] = useState(false);
+    const [post, setPost] = React.useState(null);
+    const [submitted, setSubmitted] = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         document.title = `${DOCUMENT_TITLE}Изменение новости`;
 
         getPost(id).then(res => {
             setPost(res);
-            
-            document.title = `${DOCUMENT_TITLE}Изменение новости`;
         });
+        // почему он хочет в зависимостях иметь id??????
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const changeTitleHandler = (e) => {

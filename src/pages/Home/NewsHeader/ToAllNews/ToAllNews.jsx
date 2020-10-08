@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './ToAllNews.module.scss';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { scrollTop } from '../../../../../functions';
+import { scrollTop } from '../../../../functions';
 
 const ToAllNews = () => {
 

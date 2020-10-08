@@ -12,7 +12,6 @@
         padding: 30px;
         max-width: 600px;
         background: white;
-        box-shadow: $bs_1_dt;
         border-radius: 3px;
     }
 }
@@ -24,7 +23,6 @@
         padding: 25vw/$tb+vw;
         max-width: 600vw/$tb+vw;
         background: white;
-        box-shadow: $bs_1_dt;
         border-radius: 3vw/$tb+vw;
     }
     
@@ -35,5 +33,6 @@
     
     .ContactsList {
         margin: 0 0 20vw/$mb+vw 0;
+        box-shadow: none;
     }
 }

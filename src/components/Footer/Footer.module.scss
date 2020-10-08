@@ -14,10 +14,8 @@
 
 @media (min-width: 1230px) {
     .WrapperFooter {
-        box-shadow: $bs_1_dt;
     
         .Footer {
-            height: $bar_height_dt;
 
             .Copyright {
                 font-size: 16px;
@@ -38,10 +36,8 @@
     $tb: 8.00vw;
 
     .WrapperFooter {
-        box-shadow: $bs_1_tb;
     
         .Footer {
-            height: $bar_height_tb;
 
             .Copyright {
                 font-size: 14vw/$tb+vw;
@@ -62,10 +58,8 @@
     $mb: 4.80vw;
 
     .WrapperFooter {
-        box-shadow: $bs_1_mb;
     
         .Footer {
-            height: $bar_height_mb;
 
             .Copyright {
                 font-size: 16vw/$mb+vw;

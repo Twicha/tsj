@@ -3,9 +3,6 @@
 
 .NewsCard {
     list-style: none;
-    // display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 
     a {
         font-weight: 500;
@@ -20,6 +17,7 @@
     }
 
     p {
+        color: $general_color_3;
     }
 
     &.Loading {
@@ -29,6 +27,7 @@
 
         * {
             color: transparent;
+            background: $general_color_6;
         }
 
         &:before {
@@ -54,6 +53,10 @@
             }
         }
     }
+
+    &:last-child {
+        margin: 0 0 0 0;
+    }
 }
 
 @media (min-width: 1230px) {
@@ -72,28 +75,17 @@
         }
 
         p {
-            color: $general_color_3;
             font-size: 16px;
-        }
-
-        &:last-child {
-            margin: 0 0 0 0;
         }
 
         &.Loading {
 
             * {
-                background: $general_color_6;
                 border-radius: 3px;
-            }
-
-            a {
-                height: 29px;
             }
 
             p {
                 width: 45%;
-                height: 19px;
             }
         }
     }
@@ -111,28 +103,17 @@
         }
 
         p {
-            color: $general_color_3;
             font-size: 14vw/$tb+vw;
-        }
-
-        &:last-child {
-            margin: 0 0 0 0;
         }
 
         &.Loading {
 
             * {
-                background: $general_color_6;
                 border-radius: 3vw/$tb+vw;
-            }
-
-            a {
-                height: 24vw/$tb+vw;
             }
 
             p {
                 width: 50%;
-                height: 16vw/$tb+vw;
             }
         }
     }
@@ -150,28 +131,17 @@
         }
 
         p {
-            color: $general_color_3;
             font-size: 14vw/$mb+vw;
-        }
-
-        &:last-child {
-            margin: 0 0 0 0;
         }
 
         &.Loading {
 
             * {
-                background: $general_color_6;
                 border-radius: 3vw/$mb+vw;
-            }
-
-            a {
-                height: 26vw/$mb+vw;
             }
 
             p {
                 width: 75%;
-                height: 18vw/$mb+vw;
             }
         }
     }

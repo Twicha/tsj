@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './NewsList.module.scss';
-import classNames from 'classnames';
 import NewsCard from './NewsCard/NewsCard';
 
 const NewsList = ({posts, loading}) => {

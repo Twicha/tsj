@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './NewsHeader.module.scss';
-import classNames from 'classnames';
 import ToAllNews from './ToAllNews/ToAllNews';
 
 const NewsHeader = ({length}) => {

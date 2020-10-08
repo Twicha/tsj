@@ -2,8 +2,7 @@ import React from 'react';
 import classes from './News.module.scss';
 import classNames from 'classnames';
 import { getPosts } from '../../posts';
-import NewsList from '../../components/UI/NewsList/NewsList';
-import Search from './Search/Search';
+import {NewsList, Search} from '../../components/UI';
 import {DOCUMENT_TITLE} from '../../variables';
 
 const News = () => {

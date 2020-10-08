@@ -2,10 +2,9 @@ import React from "react";
 import classes from "./Home.module.scss";
 import classNames from "classnames";
 import { getPosts } from "../../posts";
-import NewsList from "../../components/UI/NewsList/NewsList";
-import NewsHeader from "./News/NewsHeader/NewsHeader";
+import {NewsList} from "../../components/UI";
+import NewsHeader from "./NewsHeader/NewsHeader";
 import { DOCUMENT_TITLE } from "../../variables";
-import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
     const [posts, setPosts] = React.useState(Array(10).fill({}));

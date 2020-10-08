@@ -25,35 +25,14 @@
 
 @media (min-width: 1230px) {
 
-    .WrapperHeader {
-        box-shadow: $bs_1_dt;
-    
-        .Header {
-            height: $bar_height_dt;
-        }
-    }
 }
 
 @media (max-width: 1229px) and (min-width: 481px) {
     $tb: 8.00vw;
     
-    .WrapperHeader {
-        box-shadow: $bs_1_tb;
-    
-        .Header {
-            height: $bar_height_tb;
-        }
-    }
 }
 
 @media (max-width: 480px) {
     $mb: 4.80vw;
     
-    .WrapperHeader {
-        box-shadow: $bs_1_mb;
-    
-        .Header {
-            height: $bar_height_mb;
-        }
-    }
 }

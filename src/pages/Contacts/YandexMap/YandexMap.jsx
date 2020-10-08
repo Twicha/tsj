@@ -1,6 +1,4 @@
 import React from 'react';
-// import classes from './YandexMap.module.scss';
-import classNames from 'classnames';
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 
 const YandexMap = ({mapState, mapMarkCoords, className, hideLoadText, zoomControlState}) => { 

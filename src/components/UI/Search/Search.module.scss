@@ -30,7 +30,6 @@
 @media (min-width: 1230px) {
     .Search {
         margin: 0 0 20px 0;
-        box-shadow: $bs_1_dt;
         border-radius: 3px;
 
         input {
@@ -44,7 +43,6 @@
 
     .Search {
         margin: 0 0 20vw/$tb+vw 0;
-        box-shadow: $bs_1_tb;
         border-radius: 3vw/$tb+vw;
 
         input {
@@ -58,7 +56,6 @@
 
     .Search {
         margin: 0 0 20vw/$mb+vw 0;
-        box-shadow: $bs_1_mb;
         border-radius: 3vw/$mb+vw;
 
         input {

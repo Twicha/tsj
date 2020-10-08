@@ -1,9 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router";
 import classes from "./SingleNews.module.scss";
 import classNames from "classnames";
 import { getPost } from "../../posts";
 import { postedTime } from "../../functions";
-import { useHistory } from "react-router";
 import { DOCUMENT_TITLE } from "../../variables";
 
 const SingleNews = (props) => {
@@ -26,6 +26,9 @@ const SingleNews = (props) => {
 
             history.push("/404");
         }
+
+        // почему он хочет в зависимостях иметь 'history' и 'props.match.params.id'??????
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     React.useEffect(() => {

@@ -1,12 +1,11 @@
-@import '../../../scss/variables.scss';
-@import '../../../scss/mixins.scss';
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
 
 .Navigation {
 
     .NavigationList {
         display: flex;
         align-items: center;
-
 
         .NavigationList__Item {
             list-style: none;
@@ -24,14 +23,13 @@
 }
 
 @media (min-width: 1230px) {
-
     .Navigation {
 
         .NavigationList {
-    
+
             .NavigationList__Item {
                 margin: 0 0 0 25px;
-    
+
                 .NavigationList__Link {
                     font-size: 18px;
                 }
@@ -41,17 +39,17 @@
 }
 
 @media (max-width: 1229px) and (min-width: 481px) {
-    $tb: 8.00vw;
+    $tb: 8vw;
 
     .Navigation {
 
         .NavigationList {
-    
+
             .NavigationList__Item {
-                margin: 0 0 0 20vw/$tb+vw;
-    
+                margin: 0 0 0 20vw / $tb + vw;
+
                 .NavigationList__Link {
-                    font-size: 16vw/$tb+vw;
+                    font-size: 16vw / $tb + vw;
                 }
             }
         }
@@ -59,7 +57,7 @@
 }
 
 @media (max-width: 480px) {
-    $mb: 4.80vw;
+    $mb: 4.8vw;
 
     .Navigation {
         position: fixed;
@@ -71,7 +69,7 @@
         visibility: hidden;
         opacity: 0;
         transform: translateY(10%);
-        transition: .5s;
+        transition: 0.5s;
 
         &.Active {
             visibility: visible;
@@ -87,14 +85,13 @@
             align-items: center;
             justify-content: center;
 
-    
             .NavigationList__Item {
                 margin: 0 0 40vw/$mb+vw 0;
 
                 &:last-child {
                     margin: 0 0 0 0;
                 }
-    
+
                 .NavigationList__Link {
                     font-size: 40vw/$mb+vw;
                 }

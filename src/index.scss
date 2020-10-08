@@ -100,6 +100,10 @@ button, input {
     .bs-1 {
         box-shadow: $bs_1_dt;
     }
+
+    .bar-height {
+        height: $bar_height_dt;
+    }
 }
 
 @media (max-width: 1229px) and (min-width: 481px) {
@@ -130,6 +134,10 @@ button, input {
     .bs-1 {
         box-shadow: $bs_1_tb;
     }
+
+    .bar-height {
+        height: $bar_height_tb;
+    }
 }
 
 @media (max-width: 480px) {
@@ -159,5 +167,9 @@ button, input {
 
     .bs-1 {
         box-shadow: $bs_1_mb;
+    }
+
+    .bar-height {
+        height: $bar_height_mb;
     }
 }

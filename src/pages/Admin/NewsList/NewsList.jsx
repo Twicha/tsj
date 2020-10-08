@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { getPosts, deletePost } from '../../../posts';
 import { postedTime } from '../../../functions';
 import { Link } from 'react-router-dom';
-import Loader from '../../../components/UI/Loader/Loader';
+import {Loader} from '../../../components/UI';
 
 export class NewsList extends Component {
     state = {
@@ -31,15 +31,9 @@ export class NewsList extends Component {
     }
 
     deletePost = (id) => {
-        const conf = window.confirm("Вы точно хотите удалить данную новость?");
-
-        if (conf) {
+        if (window.confirm("Вы точно хотите удалить данную новость?")) {
             deletePost(id).then(res => {
-                console.log(res);
-                
                 const arr = this.state.posts.filter(n => n.postId !== id);
-    
-                console.log(arr);
     
                 this.setState({
                     posts: arr
@@ -55,7 +49,7 @@ export class NewsList extends Component {
             return (
                 <li 
                     key={post.postId} 
-                    className={classNames(classes.NewsList)}
+                    className={classNames(classes.NewsList, 'bs-1')}
                 >
                     <h2>{post.title ? post.title : null}</h2>
                     <div className={classNames(classes.Wrapper)}>

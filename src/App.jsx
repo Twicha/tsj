@@ -1,19 +1,10 @@
 import React from "react";
 import classes from './App.module.scss';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import News from "./pages/News/News";
-import Contacts from "./pages/Contacts/Contacts";
-import SingleNews from "./pages/SingleNews/SingleNews";
-import Admin from "./pages/Admin/Admin";
-import Auth from "./pages/Auth/Auth";
+import {Home, News, Contacts, SingleNews, Admin, Auth, CreateNews, EditNews, PageNotFound} from "./pages";
 import { useSelector } from "react-redux";
-import CreateNews from "./pages/CreateNews/CreateNews";
-import EditNews from "./pages/EditNews/EditNews";
 import PrivateRoute from "./helpers/PrivateRoute";
-import PageNotFound from "./pages/PageNotFound/PageNotFound";
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import {Header, Footer} from './components';
 
 function App() {
     const { isAuth } = useSelector(({ auth }) => {

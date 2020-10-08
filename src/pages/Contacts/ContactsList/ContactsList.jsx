@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './ContactsList.module.scss';
 import classNames from 'classnames';
+import classes from './ContactsList.module.scss';
 import ContactsListItem from './ContactsListItem/ContactsListItem';
 
 const contacts = [
@@ -19,7 +19,7 @@ const ContactsList = () => {
     }
     
     return (
-        <ul className={classes.ContactsList}>
+        <ul className={classNames(classes.ContactsList, 'bs-1')}>
             {renderList()}
         </ul>
     )

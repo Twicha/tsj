@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { postedTime } from '../../../../functions';
 
 const NewsCard = ({loading, title, posted, id}) => {
-    const path = `/news/${id}`;
 
     const item = () => {
         if (loading) {
@@ -19,7 +18,7 @@ const NewsCard = ({loading, title, posted, id}) => {
             return(
                 <li className={classes.NewsCard}>
                     <Link 
-                        to={path} 
+                        to={`/news/${id}`} 
                         title={title}
                     >
                         {title}

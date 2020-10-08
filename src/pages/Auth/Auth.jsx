@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import classes from './Auth.module.scss';
 import classNames from 'classnames';
 import axios from 'axios';
@@ -9,14 +9,14 @@ import { DOCUMENT_TITLE } from '../../variables';
 
 const Auth = () => {
     const dispatch = useDispatch();
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState(false);
-    const [form, setForm] = useState({
+    const [submitted, setSubmitted] = React.useState(false);
+    const [error, setError] = React.useState(false);
+    const [form, setForm] = React.useState({
         email: '',
         password: ''
     });
 
-    useEffect(() => {
+    React.useEffect(() => {
         document.title = `${DOCUMENT_TITLE}Авторизация`;
     }, []);
 

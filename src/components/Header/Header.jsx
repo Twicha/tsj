@@ -73,8 +73,8 @@ const Header = () => {
     };
 
     return (
-        <div className={classNames(classes.WrapperHeader)}>
-            <header className={classNames(classes.Header, "container")}>
+        <div className={classNames(classes.WrapperHeader, 'bs-1')}>
+            <header className={classNames(classes.Header, "container", 'bar-height')}>
                 <Logo onClick={clickHandler} />
                 <Navigation
                     mobileMenu={mobileMenu}

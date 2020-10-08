@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import 'react-quill/dist/quill.snow.css';
 import classes from './CreateNews.module.scss';
 import classNames from 'classnames';
 import { createPostedTime } from '../../functions';
 import { createPost } from '../../posts';
-import 'react-quill/dist/quill.snow.css';
-import UserForm from '../../components/UI/UserForm/UserForm';
-import GoBackToAdmin from '../../components/UI/GoBackToAdmin/GoBackToAdmin';
 import { DOCUMENT_TITLE } from '../../variables';
+import {UserForm, GoBackToAdmin} from '../../components/UI';
 
 const CreateNews = () => {
-    const [post, setPost] = useState({
+    const [post, setPost] = React.useState({
         title: '',
         text: ''
     });
-    const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = React.useState(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         document.title = `${DOCUMENT_TITLE}Создание новости`;
     }, []);
 
@@ -33,13 +32,6 @@ const CreateNews = () => {
         });
     }
 
-    const cleanInputs = () => {
-        setPost({
-            title: '',
-            text: ''
-        });
-    }
-
     const submitHandler = async (e) => {
         e.preventDefault();
 
@@ -53,7 +45,10 @@ const CreateNews = () => {
         try {
             console.log(sendPost);
             await createPost(sendPost).then(() => {
-                cleanInputs();
+                setPost({
+                    title: '',
+                    text: ''
+                });
 
                 setSubmitted(false);
             });

@@ -17,7 +17,8 @@ const Search = ({ loading, value, onChange, search, deleteHandler }) => {
         <div
             className={classNames(
                 classes.Search,
-                loading ? classes.Loading : null
+                loading ? classes.Loading : null,
+                'bs-1'
             )}
         >
             <input
